@@ -16,8 +16,7 @@ require('./src/sockets/socket');
 
 
 // Path público
-const publicPath = path.resolve(__dirname, 'public');
-app.use(express.static(publicPath));
+app.use(express.static(path.resolve(__dirname, 'public')));
 
 
 app.use('/api/login', require('./src/routes/auth'))

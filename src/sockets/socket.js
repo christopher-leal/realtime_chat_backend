@@ -6,7 +6,6 @@ const { valideToken } = require('../utils/jwt');
 // Mensajes de Sockets
 io.on('connection', client => {
 
-    // console.log(client.handshake.headers)
     const [validatedToken, id] = valideToken(client.handshake.headers['token'])
 
     if (!validatedToken) {
@@ -25,8 +24,6 @@ io.on('connection', client => {
             io.to(payload['to']).emit('message', payload);
 
     });
-
-    // client.to(id).emit('')
 
     client.on('disconnect', () => {
         console.log('Cliente desconectado');
